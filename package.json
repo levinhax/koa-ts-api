@@ -1,0 +1,54 @@
+{
+  "name": "koa-ts-api",
+  "version": "1.0.0",
+  "description": "koa ts api",
+  "main": "index.js",
+  "scripts": {
+    "watch-server": "cross-env NODE_ENV=development ts-node-dev --inspect -- src/index.ts",
+    "build-server": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src --ext .ts"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write \"src/**/*.ts\"",
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levinhax/koa-ts-api.git"
+  },
+  "keywords": [
+    "koa",
+    "ts",
+    "mysql",
+    "api"
+  ],
+  "author": "levinhax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/levinhax/koa-ts-api/issues"
+  },
+  "homepage": "https://github.com/levinhax/koa-ts-api#readme",
+  "dependencies": {
+    "koa": "^2.12.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/koa": "^2.11.3",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.10",
+    "prettier": "^2.0.5",
+    "ts-node-dev": "^1.0.0-pre.49",
+    "typescript": "^3.9.5"
+  }
+}
