@@ -257,3 +257,53 @@ pm2是node进程管理工具，可以利用它来简化很多node应用管理的
 启动后端项目: pm2 start dist/src/index.js --watch -i 2
 
 访问: http://localhost:5000/
+
+### 静态资源目录
+
+使用koa-static中间件，只需简单几步就可以搭建一个静态服务器，让我们获取到项目中的图片等静态资源。
+
+```
+npm install --save koa-static
+npm install --save-dev @types/koa-static
+```
+
+```
+// 配置静态web服务的中间件
+import koaStatic from 'koa-static';
+const path = require('path');
+
+// app.use(koaStatic(__dirname + '/static/'));
+app.use(koaStatic(path.join(__dirname + '/static/')));
+```
+
+### 跨域
+
+```
+npm install --save koa2-cors
+npm install --save-dev @types/koa2-cors
+```
+
+### 获取请求参数
+
+```
+npm install --save koa-bodyparser
+npm install --save-dev @types/koa-bodyparser
+```
+
+打印 ctx.request对象发现可以获取到传的参数
+
+### 连接数据库
+
+*请确保数据库已安装*
+
+typeorm、mysql中间件
+
+```
+npm install typeorm --save
+npm install mysql --save
+```
+
+在项目根目录新建 ormconfig.json 文件，用于写typeorm 数据库的相关配置(你还可以在现有 node 项目上运行 typeorm init，但要注意，此操作可能会覆盖已有的某些文件)。然后进入 src/index.ts 文件， 从typeorm中引入并使用createConnection方法。最后还需要去创建entity。
+
+报错 "Client does not support authentication protocol requested by server; consider upgrading MySQL client
+": TypeORM的自动建表功能无法在root用户下进行，新建用户.

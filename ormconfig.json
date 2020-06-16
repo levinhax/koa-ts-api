@@ -1,0 +1,20 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "user1",
+  "password": "user123%",
+  "database": "galaxy",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/entity/*.ts"],
+  "subscribers": ["src/subscriber/*.ts"],
+  "migrations": ["src/migration/*.ts"],
+  "timezone": "+08:00",
+  "dateStrings": true,
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
