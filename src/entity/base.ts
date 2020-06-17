@@ -6,13 +6,13 @@ abstract class BaseEntity implements IBase.Item {
     comment: '创建时间',
     type: 'timestamp',
   })
-  createdAt: string
+  createdAt: Date
 
   @UpdateDateColumn({
     comment: '更新时间',
     type: 'timestamp',
   })
-  updatedAt: string
+  updatedAt: Date
 }
 
 export default BaseEntity

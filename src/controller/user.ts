@@ -1,5 +1,6 @@
 import { Context } from 'koa'
 import { UserService } from '../service'
+import IUser from '../types/user'
 
 class UserController {
   public static async getAllUser(ctx: Context): Promise<any> {
@@ -22,14 +23,16 @@ class UserController {
         message: '用户名或密码不能为空',
       }
     } else {
-      const userData = {
-        id: '',
+      const userData: IUser.Item = {
+        id: null,
         userName,
         userPass,
         role: 3,
         userEmail: '',
         userAvatar: '',
         place: '',
+        updatedAt: new Date(),
+        createdAt: new Date(),
       }
       result = await UserService.createUser(ctx, userData)
     }

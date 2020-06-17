@@ -17,6 +17,10 @@ npm run build-server
 // 启动后端项目: pm2 start dist/src/index.js --watch -i 2
 ```
 
+### 已完成
+
+- 用户相关
+
 ### 目录
 
 ```

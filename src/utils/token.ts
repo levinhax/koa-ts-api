@@ -8,6 +8,9 @@ interface UserInfo {
   role: 1 | 2 | 3
 }
 
+// 校验白名单
+const whiteList = ['/api/user']
+
 // 创建token
 export const createToken = (userInfo: UserInfo): string => {
   const privateKey = config.jwtSecret
@@ -28,20 +31,20 @@ export const checkToken = async (ctx: Context, next: (err?: any) => any): Promis
   const method = ctx.request.method.toLocaleLowerCase()
 
   if (!token) {
-    if (method === 'get') {
+    if (whiteList.indexOf(ctx.path) !== -1) {
       await next()
     } else {
-      if (ctx.path === '/api/register' || ctx.path === '/api/login') {
+      if (ctx.path === '/api/user/register' || ctx.path === '/api/user/login') {
         await next()
       } else {
         ctx.throw(401, '未登录, 请先登录!!!')
       }
     }
   } else {
-    if (method === 'get') {
+    if (whiteList.indexOf(ctx.path) !== -1) {
       await next()
     } else {
-      if (ctx.path === '/api/register' || ctx.path === '/api/login') {
+      if (ctx.path === '/api/user/register' || ctx.path === '/api/user/login') {
         await next()
       } else {
         // let decode: any

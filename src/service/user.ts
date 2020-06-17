@@ -111,6 +111,7 @@ class UserService {
     const userRepository = getRepository(User)
     const existUser = await userRepository.findOne({ where: { id: user.id } })
     existUser.place = user.place
+    existUser.updatedAt = new Date()
     await userRepository.save(existUser)
     const res = {
       code: 1,
