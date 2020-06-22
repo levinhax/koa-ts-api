@@ -20,7 +20,7 @@ class UserService {
     } else {
       const newUser = userRepository.create(createUser)
       await userRepository.save(newUser)
-      res = { code: 1, message: '注册成功' }
+      res = { code: 200, message: '注册成功' }
     }
     return res
   }
@@ -40,7 +40,7 @@ class UserService {
       }
       const token = createToken(userData)
       res = {
-        code: 1,
+        code: 200,
         data: {
           token,
           ...userData,
